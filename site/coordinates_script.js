@@ -19,7 +19,6 @@ document.getElementById('fileInput').onchange = function() {
     let fileObjectsArray = parseOldFile(fileText);
     parsePoligons(fileObjectsArray);
     setSizablePolygons();
-    console.log(sizablePolygons.length);
     drawPolygons(sizablePolygons);
 
   };
@@ -76,12 +75,12 @@ function setSizablePolygons(){
         }
         break;
     }
+    sizablePolygons = sortByKey(sizablePolygons);
   }
 }
 
 document.getElementById('SizeViewRange').onchange = function() {
   setSizablePolygons();
-  console.log(polygons.length);
   drawPolygons(sizablePolygons);
 };
 
@@ -109,18 +108,36 @@ window.onload = function() {
     return inside;
   }
 
+  function choosePolygon(mouseX, mouseY) {
+    sizablePolygons.forEach((polygon) => {
+        const isInside = isPointInPolygon({ x: mouseX / canvas.width, y: mouseY / canvas.height }, polygon);
+        polygon.isSelected = isInside;
+        if(isInside){
+          removeObjectWithName(sizablePolygons, polygon.name);
+          sizablePolygons.push(polygon);
+          return;
+        }
+      });
+  }
 
+  function removeObjectWithName(arr, name) {
+    const objWithIdIndex = arr.findIndex((obj) => obj.name === name);
+
+    if (objWithIdIndex > -1) {
+      arr.splice(objWithIdIndex, 1);
+    }
+
+    return arr;
+  }
 
   function handleMousemove(event) {
       const mouseX = event.clientX - canvas.getBoundingClientRect().left;
       const mouseY = event.clientY - canvas.getBoundingClientRect().top;
       const opacity = parseFloat(opacityRange.value);
       // Loop through polygons and check if the mouse is inside each one
-      sizablePolygons.forEach((polygon) => {
-        const isInside = isPointInPolygon({ x: mouseX / canvas.width, y: mouseY / canvas.height }, polygon);
-        polygon.isSelected = isInside;
-      });
 
+      choosePolygon(mouseX, mouseY);
+      
       // Clear the canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -155,7 +172,9 @@ function Polygon(name, color, points){
   this.area = findArea(points);
 }
 
-
+function sortByKey(polygonList) {
+  return polygonList.sort(function(a,b) { return b.area - a.area;});
+}
 
 function parsePoligons(data){
   polygons.length = 0;
@@ -242,17 +261,6 @@ function parseOldFile(inputString) {
   }
   return objects;
 }
-
-
-// function findArea(points){
-//   let firstMultiply = 0;
-//   let secondMultiply = 0;
-//   for(let pointNumber = 0; pointNumber < points.length -1; pointNumber++){
-//     firstMultiply += points[pointNumber]["x"] * points[pointNumber+1]["y"];
-//     secondMultiply += points[pointNumber]["y"] * points[pointNumber+1]["x"];
-//   }
-//   return secondMultiply - firstMultiply;
-// }
 
 
 function findArea(points){
