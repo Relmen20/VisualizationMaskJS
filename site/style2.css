@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#container {
+  width: 100%;
+  height: 80vh;
+}
+
+#canvas {
+  width: 100%; 
+  height: 100%;
+}
+
+input[type="file"],
+input[type="range"],
+label {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+div {
+  margin: 1em auto;
+  width: 80%;
+}
+
+
+
+/*@media (min-width: 600px) {
+
+  #container,
+  input[type="file"],
+  input[type="range"],
+  label {
+    width: 600px; 
+  }
+  
+  div {
+    width: 600px;
+  }
+
+}*/
+
+@media (max-width: 599px) {
+
+  #container {
+    height: 60vh;
+  }
+
+  input[type="file"],
+  input[type="range"],
+  label {
+    padding: 0.5em;
+    font-size: 1.2rem; 
+  }
+  
+  input[type="range"] {
+    padding: 0;
+  }
+
+  div {
+    padding: 1em;
+  }
+
+  label[for="OpacityRange"],
+  label[for="SizeViewRange"],
+  label[for="SmoothViewRange"] {
+    display: inline-block; 
+    width: 30%;
+    text-align: right;
+    padding-right: 0.5em;
+  }
+  
+  input[id="opacityRange"],
+  input[id="SizeViewRange"], 
+  input[id="SmoothViewRange"] {
+    display: inline-block;
+    width: 65%; 
+  }
+
+}

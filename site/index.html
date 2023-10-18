@@ -4,17 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Polygon Drawing</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="container">
-        <canvas id="canvas"></canvas>
+        <canvas id="canvas"><img id="backgroundImage" src=""></canvas>
+        
     </div>
-    <input type="file" id="fileInput" accept=".txt">
+    <input type="file" id="fileInput" accept=".txt,.json">
     <label for="opacityRange">Opacity:</label>
     <input type="range" id="opacityRange" min="0" max="1" step="0.01" value="1">
-    <label for="SizeViewRange">Size View: min, small, average, max, all</label>
-    <input type="range" id="SizeViewRange" min="0" max="4" step="1" value="4">
-    <!-- <script src="script.js"></script> -->
+    <div>
+        <div>----------------------------------------------------------------------------------------</div>
+        <label for="SizeViewRange">Size View: min, small, average, max, all</label>
+        <input type="range" id="SizeViewRange" min="0.2" max="10" step="0.1" value="10">
+    </div>
+    <div>
+        <div>----------------------------------------------------------------------------------------</div>
+        <label for="SmoothViewRange">Smooth View</label>
+        <input type="range" id="SmoothViewRange" min="0.0001" max="0.005" step="0.0001" value="0.01">
+    </div>
+    <script src="simplify.js"></script>
     <script src="coordinates_script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

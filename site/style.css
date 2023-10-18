@@ -1,0 +1,57 @@
+
+#container {
+    text-align: center;
+    padding: 20px;
+}
+
+#canvas {
+    background-color: transparent;
+    border: 1px solid #000;
+    max-width: 100%;
+    height: auto;
+}
+
+#fileInput {
+    display: block;
+    margin: 10px auto;
+}
+
+label[for="opacityRange"] {
+    display: block;
+    margin: 10px auto;
+}
+
+#opacityRange {
+    display: block;
+    margin: 0 auto;
+}
+
+label[for="SizeViewRange"] {
+    display: block;
+    margin: 10px auto;
+}
+
+#SizeViewRange {
+    display: block;
+    margin: 0 auto;
+}
+
+label[for="SmoothViewRange"] {
+    display: block;
+    margin: 10px auto;
+}
+
+#SmoothViewRange {
+    display: block;
+    margin: 0 auto;
+}
+
+div > div {
+    text-align: center;
+    margin: 10px 0;
+}
+
+div > div::before {
+    content: "----------------------------------------------------------------------------------------";
+    color: #ccc;
+}
