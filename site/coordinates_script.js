@@ -27,7 +27,7 @@ var sizablePolygons = [];
 var polygons = [];
 
 const bgImage = document.getElementById('backgroundImage');
-bgImage.src = '/home/andrew/PythonProjects/JS/gptvia/example_of_segmentation/vw-polo-5-rest-reglament-to-thumb.jpg';
+bgImage.src = '../example_of_segmentation/vw-polo-5-rest-reglament-to-thumb.jpg';
 bgImage.onload = function() {
   canvas.width = bgImage.width;
   canvas.height = bgImage.height;
